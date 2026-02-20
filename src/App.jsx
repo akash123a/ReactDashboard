@@ -2,8 +2,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
+import Homedashboards  from "./pages/Homedashboards";
 
-
+ import Home from "./components/Home/Home";
  
 
 import AdminLayout from "./admin/AdminLayout";
@@ -35,8 +36,8 @@ function App() {
           <Route path="blogs" element={<Blogs />} />
           {/* <Route path="settings" element={<Settings />} /> */}
         </Route>
-
-        <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<Homedashboards />} />
+        {/* <Route path="*" element={<NotFound />} /> */}
 
       </Routes>
     </BrowserRouter>
