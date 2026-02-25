@@ -1,0 +1,111 @@
+frontend/
+├── public/
+│   └── index.html
+│
+├── src/
+│   ├── api/
+│   │   ├── axiosInstance.js        # Axios base config
+│   │   └── authApi.js              # Login API calls
+│   │
+│   ├── auth/
+│   │   ├── auth.js                 # login(), logout(), isAuthenticated()
+│   │   └── PrivateRoute.jsx        # Route protection
+│   │
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── AdminLayout.jsx     # Sidebar + Header
+│   │   │   ├── Sidebar.jsx
+│   │   │   └── Header.jsx
+│   │   │
+│   │   └── common/
+│   │       ├── Loader.jsx
+│   │       └── Button.jsx
+│   │
+│   ├── pages/
+│   │   ├── auth/
+│   │   │   └── Login.jsx
+│   │   │
+│   │   ├── dashboard/
+│   │   │   └── Dashboard.jsx
+│   │   │
+│   │   ├── users/
+│   │   │   ├── UserList.jsx
+│   │   │   ├── AddUser.jsx
+│   │   │   └── EditUser.jsx
+│   │   │
+│   │   └── settings/
+│   │       └── Settings.jsx
+│   │
+│   ├── routes/
+│   │   └── AppRoutes.jsx
+│   │
+│   ├── utils/
+│   │   ├── constants.js
+│   │   └── helpers.js
+│   │
+│   ├── App.jsx
+│   └── main.jsx
+│
+├── package.json
+└── vite.config.js / webpack.config.js
+
+
+
+
+
+
+
+
+
+Login.jsx
+   ↓ (API Call)
+authApi.js
+   ↓
+Backend → returns JWT
+   ↓
+auth.js → localStorage.setItem("admin_token")
+   ↓
+PrivateRoute.jsx
+   ↓
+AdminLayout → Dashboard / Users / Settings
+
+
+
+
+
+
+
+
+
+
+backend/
+├── src/
+│   ├── config/
+│   │   ├── db.js                   # Database connection
+│   │   └── jwt.js                  # JWT secret & config
+│   │
+│   ├── controllers/
+│   │   ├── authController.js       # Login, Logout
+│   │   └── userController.js       # CRUD users
+│   │
+│   ├── middleware/
+│   │   ├── authMiddleware.js       # Token verification
+│   │   └── roleMiddleware.js       # Admin roles (optional)
+│   │
+│   ├── models/
+│   │   └── User.js                 # Admin/User schema
+│   │
+│   ├── routes/
+│   │   ├── authRoutes.js
+│   │   └── userRoutes.js
+│   │
+│   ├── utils/
+│   │   ├── generateToken.js
+│   │   └── hashPassword.js
+│   │
+│   ├── app.js
+│   └── server.js
+│
+├── .env
+├── package.json
+└── nodemon.json

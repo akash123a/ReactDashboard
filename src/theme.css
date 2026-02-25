@@ -1,0 +1,25 @@
+/* DARK */
+body[data-theme="dark"] {
+  background-color: #0f172a;
+  color: #e5e7eb;
+}
+
+body[data-theme="dark"] .bg-dark {
+  background-color: #020617 !important;
+}
+
+body[data-theme="dark"] .card {
+  background-color: #020617;
+  color: #e5e7eb;
+}
+
+/* LIGHT */
+body[data-theme="light"] {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+body[data-theme="light"] .bg-dark {
+  background-color: #ffffff !important;
+  color: #000;
+}
