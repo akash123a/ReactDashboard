@@ -26,6 +26,7 @@ import Navbar from "./components/Navbar/navbar";
 
 function App() {
   return (
+    
     <BrowserRouter>
       <Routes>
 

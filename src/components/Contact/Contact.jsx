@@ -9,65 +9,60 @@ const Contact = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [submittedData, setSubmittedData] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState("");
 
-  // 🔍 Validation function
+  // ✅ Validation Function
   const validate = (name, value) => {
     let error = "";
 
-    if (name === "name") {
-      if (!value.trim()) error = "Name is required";
-      else if (value.length < 3)
-        error = "Name must be at least 3 characters";
+    if (name === "name" && value.trim().length < 3) {
+      error = "Name must be at least 3 characters";
     }
 
     if (name === "email") {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!value) error = "Email is required";
-      else if (!emailRegex.test(value))
+      if (!emailRegex.test(value)) {
         error = "Invalid email format";
+      }
     }
 
-    if (name === "password") {
-      if (!value) error = "Password is required";
-      else if (value.length < 6)
-        error = "Password must be at least 6 characters";
+    if (name === "password" && value.length < 6) {
+      error = "Password must be at least 6 characters";
     }
 
-    if (name === "confirmPassword") {
-      if (!value) error = "Confirm your password";
-      else if (value !== form.password)
-        error = "Passwords do not match";
+    if (name === "confirmPassword" && value !== form.password) {
+      error = "Passwords do not match";
     }
 
     return error;
   };
 
-  // 📝 Handle Input Change
+  // ✅ Handle Change
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setForm({ ...form, [name]: value });
+    setForm({
+      ...form,
+      [name]: value,
+    });
 
-    const error = validate(name, value);
-    setErrors({ ...errors, [name]: error });
+    const errorMessage = validate(name, value);
+    setErrors({
+      ...errors,
+      [name]: errorMessage,
+    });
   };
 
   // ✅ Check if form valid
   const isFormValid =
-    form.name &&
-    form.email &&
-    form.password &&
-    form.confirmPassword &&
-    Object.values(errors).every((err) => err === "");
+    Object.values(errors).every((err) => err === "") &&
+    Object.values(form).every((field) => field !== "");
 
-  // 📩 Submit Form
+  // ✅ Handle Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setLoading(true);
-    setSuccess("");
 
     try {
       const response = await fetch("http://localhost:5000/send-email", {
@@ -80,92 +75,105 @@ const Contact = () => {
 
       const data = await response.json();
 
-      if (response.ok) {
-        setSuccess("Email sent successfully 🎉");
-        setForm({
-          name: "",
-          email: "",
-          password: "",
-          confirmPassword: "",
-        });
-      } else {
-        alert(data.error);
-      }
+      alert(data.message);
+      setSubmittedData(form);
+
+      setForm({
+        name: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
     } catch (error) {
-      alert("Email sending failed ❌");
+      alert("Email sending failed");
     }
 
     setLoading(false);
   };
 
   return (
-    <div className="container mt-5">
-      <h2>Contact Form</h2>
+    <div style={styles.container}>
+      <h2>Contacts Form</h2>
 
-      <form onSubmit={handleSubmit} className="card p-4 shadow">
-
-        {/* Name */}
+      <form onSubmit={handleSubmit} style={styles.form}>
         <input
           type="text"
           name="name"
           placeholder="Name"
-          className="form-control mb-2"
           value={form.name}
           onChange={handleChange}
         />
-        <small className="text-danger">{errors.name}</small>
+        <span style={styles.error}>{errors.name}</span>
 
-        {/* Email */}
         <input
           type="email"
           name="email"
           placeholder="Email"
-          className="form-control mb-2"
           value={form.email}
           onChange={handleChange}
         />
-        <small className="text-danger">{errors.email}</small>
+        <span style={styles.error}>{errors.email}</span>
 
-        {/* Password */}
         <input
           type="password"
           name="password"
           placeholder="Password"
-          className="form-control mb-2"
           value={form.password}
           onChange={handleChange}
         />
-        <small className="text-danger">{errors.password}</small>
+        <span style={styles.error}>{errors.password}</span>
 
-        {/* Confirm Password */}
         <input
           type="password"
           name="confirmPassword"
           placeholder="Confirm Password"
-          className="form-control mb-2"
           value={form.confirmPassword}
           onChange={handleChange}
         />
-        <small className="text-danger">
-          {errors.confirmPassword}
-        </small>
+        <span style={styles.error}>{errors.confirmPassword}</span>
 
-        <button
-          type="submit"
-          className="btn btn-primary mt-3"
-          disabled={!isFormValid || loading}
-        >
+        <button type="submit" disabled={!isFormValid || loading}>
           {loading ? "Sending..." : "Submit"}
         </button>
-
-        {success && (
-          <div className="alert alert-success mt-3">
-            {success}
-          </div>
-        )}
       </form>
+
+      {/* ✅ Submitted Data Card */}
+      {submittedData && (
+        <div style={styles.card}>
+          <h3>Submitted Data</h3>
+          <p><strong>Name:</strong> {submittedData.name}</p>
+          <p><strong>Email:</strong> {submittedData.email}</p>
+        </div>
+      )}
     </div>
   );
+};
+
+const styles = {
+  container: {
+    width: "350px",
+    margin: "50px auto",
+    padding: "20px",
+    border: "1px solid #ddd",
+    borderRadius: "10px",
+    textAlign: "center",
+  },
+  form: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+  },
+  error: {
+    color: "red",
+    fontSize: "12px",
+  },
+  card: {
+    marginTop: "20px",
+    padding: "15px",
+    border: "1px solid #4CAF50",
+    borderRadius: "8px",
+    backgroundColor: "#f0fff0",
+  },
 };
 
 export default Contact;
