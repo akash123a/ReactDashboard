@@ -11,6 +11,8 @@ import Homedashboards  from "./pages/Homedashboards";
   import About from "./components/About/about";  
  import Services from "./components/Services/Services";
 
+  import Contact from "./components/Contact/Contact";
+
 import AdminLayout from "./admin/AdminLayout";
 import Dashboard from "./admin/Dashboard";
 import Users from "./admin/Users";
@@ -47,7 +49,7 @@ function App() {
         <Route path="/" element={<><Navbar /><Home /></>} />
         <Route path="/about" element={<><Navbar /><About /></>} />
         <Route path="/service" element={<><Navbar /><Services /></>} />
-
+        <Route path="/contact" element={<><Navbar /><Contact /></>} />
       </Routes>
     </BrowserRouter>
   );
