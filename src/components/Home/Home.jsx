@@ -2,6 +2,8 @@ import React from "react";
 import "./Home.css";
 import Carousel from "react-bootstrap/Carousel";
 import Slider from "../common/Slider/Slider";
+import Features from "../common/Features/Features";
+import Products from "../common/Product/Products";
 
 function User({ name }) {
   return <h3>{name}</h3>;
@@ -12,7 +14,8 @@ const Home = () => {
     <>
 
     <Slider />
-          
+          <Features />
+          <Products />
       <p>User name={"Apex"}</p>
       <User name="John Doe" />
 
