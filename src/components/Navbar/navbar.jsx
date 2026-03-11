@@ -31,9 +31,7 @@ const NavbarComponent = () => {
         </Container>
       </Navbar>
 
-      <div className="container mt-1">
-        <Button variant="primary">Click Me</Button>
-      </div>
+      
     </>
   )
 }
