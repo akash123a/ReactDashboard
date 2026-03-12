@@ -3,3 +3,12 @@ body {
     background-color 0.3s ease,
     color 0.3s ease;
 }
+body.light {
+  background-color: #ffffff;
+  color: #000;
+}
+
+body.dark {
+  background-color: #121212;
+  color: #ffffff;
+}

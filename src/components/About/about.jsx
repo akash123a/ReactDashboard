@@ -1,11 +1,13 @@
 import React from "react";
 import "./about.css";
+import FetchProducts from "../common/Product/FetchProducts";
 
 
 
 
 const About = () => {
   return (
+    <>
     <div className="about-container">
 
       {/* Hero Section */}
@@ -54,6 +56,9 @@ const About = () => {
       </section>
 
     </div>
+
+    <FetchProducts/>
+    </>
   );
 };
 

@@ -20,6 +20,8 @@ const Home = () => {
       <User name="John Doe" />
 
       <h2 className="text-center mt-4">Home Page</h2>
+
+      
     </>
   );
 };
