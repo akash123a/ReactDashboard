@@ -3,19 +3,33 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import logo from "./assets/lion.png"
+import "./Navbar.css";
 import { NavLink } from "react-router-dom";
 import { ThemeContext } from "../../context/ThemeContext";
-import FetchProducts from "../common/Product/FetchProducts";
 
 const NavbarComponent = () => {
 
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <>
-      <Navbar bg={theme === "light" ? "light" : "dark"} data-bs-theme={theme}>
-        <Container>
-          <Navbar.Brand as={NavLink} to="/">Navbar</Navbar.Brand>
+    <Navbar
+      expand="lg"
+      bg={theme === "light" ? "light" : "dark"}
+      data-bs-theme={theme}
+    >
+      <Container>
+
+        {/* Logo */}
+        <Navbar.Brand as={NavLink} to="/">
+          <img src="/lion.png" alt="logo" className="navbar-logo" />
+        </Navbar.Brand>
+
+        {/* Hamburger Button */}
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
+        {/* Collapsible Menu */}
+        <Navbar.Collapse id="basic-navbar-nav">
 
           <Nav className="me-auto">
             <Nav.Link as={NavLink} to="/">Home</Nav.Link>
@@ -25,13 +39,13 @@ const NavbarComponent = () => {
           </Nav>
 
           <Button onClick={toggleTheme}>
-            {theme === "light" ? "Dark Mode 🌙" : "Light Mode ☀️"}
+            {theme === "light" ? "Dark 🌙" : "Light ☀️"}
           </Button>
 
-        </Container>
-      </Navbar>
-     
-    </>
+        </Navbar.Collapse>
+
+      </Container>
+    </Navbar>
   );
 };
 
