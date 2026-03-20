@@ -1,8 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
- 
-
-import Login from "./pages/Login";
+  
  
 import Homedashboards  from "./pages/Homedashboards";
 
@@ -30,8 +28,7 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        <Route path="/login" element={<Login />} />
-
+      
         {/* ADMIN */}
         <Route
           path="/admin"
@@ -51,6 +48,8 @@ function App() {
         <Route path="/about" element={<><Navbar /><About /></>} />
         <Route path="/service" element={<><Navbar /><Services /></>} />
         <Route path="/contact" element={<><Navbar /><Contact /></>} />
+        
+        
       </Routes>
     </BrowserRouter>
   );

@@ -1,4 +1,4 @@
-import { login } from "../auth/auth";
+import { login } from "../../auth/auth";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
