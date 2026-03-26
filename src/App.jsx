@@ -15,7 +15,7 @@ import AdminLayout from "./admin/AdminLayout";
 import Dashboard from "./admin/Dashboard";
 import Users from "./admin/Users";
 import Blogs from "./admin/Blogs";
-// import Settings from "./admin/Settings";
+// import Settings from "./admin/Settings";`\ 
 
 import ProtectedRoute from "./routes/ProtectedRoute";
 import Navbar from "./components/Navbar/navbar";
