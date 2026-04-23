@@ -34,6 +34,7 @@ const NavbarComponent = () => {
           <Nav className="me-auto">
             <Nav.Link as={NavLink} to="/">Home</Nav.Link>
             <Nav.Link as={NavLink} to="/about">About</Nav.Link>
+            <Nav.Link as={NavLink} to="/blogs">Blogs</Nav.Link>
             <Nav.Link as={NavLink} to="/service">Service</Nav.Link>
             <Nav.Link as={NavLink} to="/contact">Contact</Nav.Link>
           </Nav>

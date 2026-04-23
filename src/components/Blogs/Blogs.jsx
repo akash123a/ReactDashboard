@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../services/api";
+import api from "../../services/api";
 
 function Blogs() {
   const [blogs, setBlogs] = useState([]);
@@ -16,6 +16,8 @@ function Blogs() {
           <h4>{blog.title}</h4>
         </div>
       ))}
+      <h2 className="text-center mt-4">Blogs Page</h2>
+      <div className="as"> thsi is a  Frontend  Blog Page </div>
     </div>
   );
 }
