@@ -8,14 +8,14 @@ import Homedashboards  from "./pages/Homedashboards";
  
   import About from "./components/About/about";  
  import Services from "./components/Services/Services";
-  
+  import BlogsFrontend  from "./components/Blogs/Blogs";
 
   import Contact from "./components/Contact/Contact";
 
 import AdminLayout from "./admin/AdminLayout";
 import Dashboard from "./admin/Dashboard";
 import Users from "./admin/Users";
-import Blogs from "./admin/Blogs";
+import AdminBlogs  from "./admin/Blogs";
 // import Settings from "./admin/Settings";`\ 
 
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -41,13 +41,13 @@ function App() {
         >
           <Route index element={<Dashboard />} />
           <Route path="users" element={<Users />} />
-          <Route path="blogs" element={<Blogs />} />
+          <Route path="blogs" element={<AdminBlogs  />} />
         </Route>
 
         {/* PUBLIC */}
         <Route path="/" element={<><Navbar /><Home /></>} />
         <Route path="/about" element={<><Navbar /><About /></>} />
-        <Route path="/blogs" element={<><Navbar /><Blogs /></>} />
+        <Route path="/blogs" element={<><Navbar /><BlogsFrontend  /></>} />
         <Route path="/service" element={<><Navbar /><Services /></>} />
         <Route path="/contact" element={<><Navbar /><Contact /></>} />
         
